@@ -36,6 +36,11 @@ const GlobalStyle = createGlobalStyle<GlobalStylesProps>`
   }
 
   main {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  section {
     flex-grow: 1;
   }
 

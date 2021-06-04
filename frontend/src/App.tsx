@@ -9,9 +9,10 @@ import HomePage from "./home/pages/HomePage";
 import Footer from "./shared/components/Navigation/Footer";
 import Header from "./shared/components/Navigation/Header";
 import DashboardPage from "./dashboard/pages/DashboardPage";
+import Aside from "./shared/components/Navigation/Aside";
 
-const App = () => {
-  const [isLogged, setIsLogged] = useState(true);
+const App: React.FC = () => {
+  const [isLogged, setIsLogged] = useState(false);
   let routes;
 
   if (isLogged) {
@@ -42,7 +43,7 @@ const App = () => {
         <main>
           {isLogged ? (
             <>
-              <aside>aside</aside>
+              <Aside>aside</Aside>
               <section>{routes}</section>
             </>
           ) : (
