@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+
+import GlobalStyle from "./shared/utils/globalStyles";
+import Theme from "./shared/utils/theme";
 
 import HomePage from "./home/pages/HomePage";
 import Footer from "./shared/components/Navigation/Footer";
@@ -31,20 +35,23 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <Header />
-      <main>
-        {isLogged ? (
-          <>
-            <aside>aside</aside>
+    <ThemeProvider theme={Theme}>
+      <GlobalStyle />
+      <Router>
+        <Header />
+        <main>
+          {isLogged ? (
+            <>
+              <aside>aside</aside>
+              <section>{routes}</section>
+            </>
+          ) : (
             <section>{routes}</section>
-          </>
-        ) : (
-          <section>{routes}</section>
-        )}
-      </main>
-      <Footer />
-    </Router>
+          )}
+        </main>
+        <Footer />
+      </Router>
+    </ThemeProvider>
   );
 };
 
