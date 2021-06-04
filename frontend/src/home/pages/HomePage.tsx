@@ -1,7 +1,12 @@
+import LoginForm from "../components/LoginForm";
 import { StyledContainer } from "./HomePage.css";
 
 const HomePage = () => {
-  return <StyledContainer>HomePage</StyledContainer>;
+  return (
+    <StyledContainer>
+      <LoginForm />
+    </StyledContainer>
+  );
 };
 
 export default HomePage;
