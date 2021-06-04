@@ -6,7 +6,7 @@ export default {
     },
     secondary: {
       light: "#FDD55E",
-      normal: "#F6F8F9",
+      normal: "#FAA91B",
     },
 
     gray: {
