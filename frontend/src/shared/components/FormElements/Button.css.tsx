@@ -5,9 +5,9 @@ interface StyledRootButtonProps {
 }
 
 const RootButton = styled.button<StyledRootButtonProps>`
-  font-family: ${({ theme }) => theme.fonts.secondary};
+  font-family: ${({ theme }) => theme.fonts.primary};
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.5rem 1.5rem;
   margin: ${({ margin }) => margin};
   border: none;

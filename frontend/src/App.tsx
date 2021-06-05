@@ -16,6 +16,8 @@ import Header from "./shared/components/Navigation/Header";
 import DashboardPage from "./dashboard/pages/DashboardPage";
 import Aside from "./shared/components/Navigation/Aside";
 
+import "./App.css";
+
 const store = configureStore();
 
 const App: React.FC = () => {

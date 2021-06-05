@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle<GlobalStylesProps>`
   }
 
   body {
-    font-family: "Nunito Sans, sans-serif";
+    font-family: "Barlow", sans-serif;
     color: ${({ theme }) => theme.colors.primary.normal};
   }
 

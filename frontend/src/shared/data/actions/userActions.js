@@ -18,10 +18,10 @@ export const postUser = (loginObject) => async (dispatch) => {
       body: JSON.stringify(loginObject),
     })
       .then((response) => response.json())
-      .then((loginObject) => {
+      .then((data) => {
         dispatch({
           type: USER_POST_SUCCESS,
-          payload: loginObject,
+          payload: data,
         });
       });
   } catch (error) {

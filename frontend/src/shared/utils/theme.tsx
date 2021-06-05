@@ -20,8 +20,6 @@ export default {
     danger: "#F26F76",
   },
   fonts: {
-    // primary: "Nunito Sans, sans-serif",
-    // secondary: "Cormorant Garamond, serif",
-    // artist: "Great Vibes, cursive",
+    primary: "Barlow, sans-serif",
   },
 };
