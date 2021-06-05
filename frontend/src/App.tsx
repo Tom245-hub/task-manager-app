@@ -6,12 +6,17 @@ import { useSelector } from "react-redux";
 import GlobalStyle from "./shared/utils/globalStyles";
 import Theme from "./shared/utils/theme";
 
+import configureStore from "./shared/data/store";
+import { Provider } from "react-redux";
+
 import HomePage from "./home/pages/HomePage";
 import Footer from "./shared/components/Navigation/Footer";
 import Header from "./shared/components/Navigation/Header";
 import DashboardPage from "./dashboard/pages/DashboardPage";
 import Aside from "./shared/components/Navigation/Aside";
 import { RootState } from "./shared/data/reducers/rootReducers";
+
+const store = configureStore();
 
 const App: React.FC = () => {
   const isLogged = useSelector((state: RootState) => state.user.user.user);
@@ -58,4 +63,12 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+const RootApp: React.FC = () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};
+
+export default RootApp;
