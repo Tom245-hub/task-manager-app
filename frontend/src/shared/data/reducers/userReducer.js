@@ -7,12 +7,12 @@ import { LOADING_STATES } from "../constans/commonConstans";
 
 const initialState = {
   loading: {},
-  user: {},
+  data: {},
+  error: {},
 };
 
 const user = (state = initialState, action) => {
   const newLoading = { ...state.loading };
-  const changedIsUserLogged = { ...state.isUserLogged };
 
   switch (action.type) {
     case USER_POST_REQUEST:
@@ -22,7 +22,8 @@ const user = (state = initialState, action) => {
           ...state.loading,
           [action.type]: LOADING_STATES.LOADING,
         },
-        user: {},
+        data: {},
+        error: {},
       };
 
     case USER_POST_SUCCESS:
@@ -33,7 +34,8 @@ const user = (state = initialState, action) => {
           ...state.loading,
           [action.type]: LOADING_STATES.LOADED,
         },
-        user: action.payload,
+        data: action.payload,
+        error: {},
       };
 
     case USER_POST_FAILURE:
@@ -44,7 +46,8 @@ const user = (state = initialState, action) => {
           ...state.loading,
           [action.type]: LOADING_STATES.FAILED,
         },
-        user: {},
+        data: {},
+        error: action.payload,
       };
 
     default:

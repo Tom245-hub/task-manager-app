@@ -10,14 +10,14 @@ export const postUser = (loginObject) => async (dispatch) => {
   });
 
   try {
-    const response = fetch("http://localhost:8000/users", {
+    const res = fetch("http://localhost:8000/users", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(loginObject),
     })
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
         dispatch({
           type: USER_POST_SUCCESS,

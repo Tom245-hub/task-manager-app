@@ -1,13 +1,13 @@
 const User = require("../db/models/user");
 
 exports.postUser = async (req, res) => {
-  console.log(req.body);
   try {
     const { login, password } = req.body;
     const user = await User.findOne({ login: login });
 
     if (!user) {
-      response.status(404).json({
+      res.status(404).json({
+        error: 404,
         message: "Użytkownik o podanym loginie nie istnieje",
       });
 
@@ -17,7 +17,8 @@ exports.postUser = async (req, res) => {
     const isPasswordCorrect = user.password === password;
     if (!isPasswordCorrect) {
       res.status(401).json({
-        message: "Hasło lub login się nie zgadza",
+        error: 401,
+        message: "Błędne hasło",
       });
 
       return;

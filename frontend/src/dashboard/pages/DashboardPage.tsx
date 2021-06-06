@@ -4,7 +4,7 @@ import { StyledContainer } from "./DashboardPage.css";
 
 const DashboardPage: React.FC = () => {
   const user: { login: string; _id: string } = useSelector(
-    (state: RootState) => state.user.user.user
+    (state: RootState) => state.user.data.user
   );
 
   return (

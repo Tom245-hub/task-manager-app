@@ -1,12 +1,10 @@
-import Button from "../../shared/components/FormElements/Button";
-import LoginForm from "../components/LoginForm";
+import AuthForm from "../components/AuthForm";
 import { StyledContainer } from "./HomePage.css";
 
 const HomePage = () => {
   return (
     <StyledContainer>
-      <LoginForm />
-      <h1>Heloo łąśżźćóę</h1>
+      <AuthForm />
     </StyledContainer>
   );
 };

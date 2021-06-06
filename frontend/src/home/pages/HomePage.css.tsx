@@ -10,7 +10,5 @@ export const StyledContainer = styled.div`
 
   form {
     width: 20rem;
-    border: 3px solid ${({ theme }) => theme.colors.gray.light};
-    padding: 2rem;
   }
 `;

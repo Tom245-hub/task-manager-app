@@ -6,6 +6,6 @@ export const StyledInput = styled.input`
   color: ${({ theme }) => theme.colors.primary.normal};
   border 1px solid
     ${({ theme }) => theme.colors.gray.normal};
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem;
   margin-bottom: 0.5rem;
 `;

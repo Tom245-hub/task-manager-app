@@ -21,7 +21,7 @@ import "./App.css";
 const store = configureStore();
 
 const App: React.FC = () => {
-  const isLogged = useSelector((state: RootState) => state.user.user.user);
+  const isLogged = useSelector((state: RootState) => state.user.data.user);
   let routes;
 
   if (isLogged) {
