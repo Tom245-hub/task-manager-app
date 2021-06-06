@@ -35,3 +35,15 @@ export const StyledCancelButton = styled(RootButton)`
     border: 2px solid ${({ theme }) => theme.colors.secondary.light};
   }
 `;
+
+export const StyledLoginButton = styled(RootButton)`
+  width: 100%;
+  color: ${({ theme }) => theme.colors.primary.light};
+  background-color: ${({ theme }) => theme.colors.secondary.light};
+  border: 2px solid ${({ theme }) => theme.colors.secondary.light};
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary.normal};
+    background-color: ${({ theme }) => theme.colors.secondary.normal};
+    border: 2px solid ${({ theme }) => theme.colors.secondary.normal};
+  }
+`;

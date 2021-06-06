@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { StyledConfirmButton, StyledCancelButton } from "./Button.css";
+import { StyledConfirmButton, StyledCancelButton, StyledLoginButton } from "./Button.css";
 
 interface ButtonProps {
-  children: string;
-  variant?: "confirm" | "cancel";
+  variant?: "confirm" | "cancel" | "login";
   link?: string;
   type?: "submit" | "reset" | "button";
   onClick?: () => void;
@@ -25,6 +24,8 @@ const Button: React.FC<ButtonProps> = ({
         return StyledConfirmButton;
       case "cancel":
         return StyledCancelButton;
+      case "login":
+        return StyledLoginButton;
       default:
         return StyledConfirmButton;
     }

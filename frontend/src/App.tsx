@@ -17,6 +17,7 @@ import DashboardPage from "./dashboard/pages/DashboardPage";
 import Aside from "./shared/components/Navigation/Aside";
 
 import "./App.css";
+import AsideHome from "./home/components/AsideHome";
 
 const store = configureStore();
 
@@ -48,18 +49,21 @@ const App: React.FC = () => {
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <Router>
-        <Header />
-        <main>
-          {isLogged ? (
-            <>
-              <Aside>aside</Aside>
+        {isLogged ? (
+          <>
+            <Header />
+            <main>
+              <Aside />
               <section>{routes}</section>
-            </>
-          ) : (
+            </main>
+            <Footer />
+          </>
+        ) : (
+          <main>
             <section>{routes}</section>
-          )}
-        </main>
-        <Footer />
+            <AsideHome />
+          </main>
+        )}
       </Router>
     </ThemeProvider>
   );

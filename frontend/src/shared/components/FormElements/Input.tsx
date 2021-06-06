@@ -1,5 +1,6 @@
 import React from "react";
-import { StyledInput } from "./Input.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { StyledBox, StyledInput, StyledIconBox } from "./Input.css";
 
 interface InputProps {
   id: string;
@@ -8,18 +9,32 @@ interface InputProps {
   onChange: any;
   value: any;
   required: any;
+  icon: any;
 }
 
-const Input: React.FC<InputProps> = ({ id, type, name, onChange, value, required }) => {
+const Input: React.FC<InputProps> = ({
+  id,
+  type,
+  name,
+  onChange,
+  value,
+  required,
+  icon,
+}) => {
   return (
-    <StyledInput
-      id={id}
-      type={type}
-      name={name}
-      onChange={onChange}
-      value={value}
-      required={required}
-    />
+    <StyledBox>
+      <StyledIconBox>
+        <FontAwesomeIcon icon={icon} />
+      </StyledIconBox>
+      <StyledInput
+        id={id}
+        type={type}
+        name={name}
+        onChange={onChange}
+        value={value}
+        required={required}
+      />
+    </StyledBox>
   );
 };
 
