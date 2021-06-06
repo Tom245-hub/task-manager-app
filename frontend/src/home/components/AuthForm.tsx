@@ -74,7 +74,7 @@ const AuthForm: React.FC = () => {
           <InfoValid>{errorsServer.message}</InfoValid>
         )}
         <label>
-          Password:
+          Hasło:
           <Input
             id='password'
             type='password'

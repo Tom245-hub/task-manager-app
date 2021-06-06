@@ -1,7 +1,14 @@
-import { StyledContainer } from "./Header.css";
+import { Link } from "react-router-dom";
+import { StyledContainer, StyledLogo } from "./Header.css";
 
 const Header: React.FC = () => {
-  return <StyledContainer>Header</StyledContainer>;
+  return (
+    <StyledContainer>
+      <Link to='/'>
+        <StyledLogo src='/logo.svg' />
+      </Link>
+    </StyledContainer>
+  );
 };
 
 export default Header;
