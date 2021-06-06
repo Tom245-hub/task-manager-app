@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 
-import { faSignInAlt, faKey } from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt, faKey, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-import { postUser } from "../../shared/data/actions/userActions";
+import { postNewUser } from "../../shared/data/actions/userActions";
 import { RootState } from "../../shared/data/reducers/rootReducers";
 
 import Button from "../../shared/components/FormElements/Button";
@@ -21,14 +21,14 @@ import {
   StyledTextForm,
 } from "./AuthForm.css";
 
-interface AuthFormProps {
+interface SigupFormProps {
   toggleMode: any;
 }
 
-const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
+const SignupForm: React.FC<SigupFormProps> = ({ toggleMode }) => {
   const dispatch = useDispatch();
 
-  const errorsServer = useSelector((state: RootState) => state.user.data);
+  const infoServer = useSelector((state: RootState) => state.user.data);
 
   const { values, errors, handleChange, handleSubmit } = useForm(
     validate,
@@ -36,19 +36,37 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
   );
 
   function handleSubmitAction() {
-    const loginObject = {
+    const signupObject = {
+      email: values.email,
       login: values.login,
       password: values.password,
     };
 
-    dispatch(postUser(loginObject));
+    dispatch(postNewUser(signupObject));
   }
 
   return (
     <Card>
-      <StyledTitle>Zaloguj się do panelu</StyledTitle>
+      <StyledTitle>Załóż konto</StyledTitle>
       <StyledLine />
       <StyledForm onSubmit={handleSubmit} noValidate>
+        <label>
+          <StyledTextLabel>E-mail:</StyledTextLabel>
+          <Input
+            id='email'
+            type='email'
+            name='email'
+            onChange={handleChange}
+            value={values.email || ""}
+            required
+            icon={faEnvelope}
+          />
+        </label>
+        {errors.email && <InfoValid variant='negative'>{errors.email}</InfoValid>}
+        {/* {errorsServer.email && errorsServer.email === 404 && (
+          <InfoValid>{errorsServer.message}</InfoValid>
+        )} */}
+
         <label>
           <StyledTextLabel>Login:</StyledTextLabel>
           <Input
@@ -62,9 +80,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
           />
         </label>
         {errors.login && <InfoValid variant='negative'>{errors.login}</InfoValid>}
-        {errorsServer.error && errorsServer.error === 404 && (
-          <InfoValid variant='negative'>{errorsServer.message}</InfoValid>
-        )}
+        {/* {errorsServer.login && errorsServer.login === 404 && (
+          <InfoValid>{errorsServer.message}</InfoValid>
+        )} */}
+
         <label>
           <StyledTextLabel>Hasło:</StyledTextLabel>
           <Input
@@ -78,18 +97,23 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
           />
         </label>
         {errors.password && <InfoValid variant='negative'>{errors.password}</InfoValid>}
-        {errorsServer.error && errorsServer.error === 401 && (
-          <InfoValid variant='negative'>{errorsServer.message}</InfoValid>
+
+        {infoServer.login && (
+          <InfoValid variant='positive'>
+            Twoje konto zostało założone. Twój login: {infoServer.login} Twoje hasło:
+            {infoServer.password}
+          </InfoValid>
         )}
+
         <Button type='submit' variant='login' margin='0 0 1.5rem 0'>
-          Zaloguj
+          Załóż konto
         </Button>
         <StyledTextForm>
-          Nie masz konta? <a onClick={toggleMode}>Przejdź do rejestracji</a>
+          Masz już konto? <a onClick={toggleMode}>Przejdź do logowania</a>
         </StyledTextForm>
       </StyledForm>
     </Card>
   );
 };
 
-export default AuthForm;
+export default SignupForm;

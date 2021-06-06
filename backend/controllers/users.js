@@ -34,3 +34,25 @@ exports.postUser = async (req, res) => {
     });
   }
 };
+
+exports.postNewUser = async (req, res) => {
+  let user;
+
+  try {
+    const { email, login, password } = req.body;
+
+    const userData = {
+      email: email,
+      login: login,
+      password: password,
+    };
+
+    user = new User(userData);
+
+    await user.save();
+  } catch (err) {
+    return res.status(422).json({ message: err.message });
+  }
+
+  res.status(201).json(user);
+};

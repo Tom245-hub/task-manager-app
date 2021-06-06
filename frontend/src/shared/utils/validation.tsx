@@ -1,19 +1,19 @@
 export const validate = (values: any) => {
   let errors: any = {};
   // if (!values.email) {
-  //   errors.email = "Email address is required";
+  //   errors.email = "Wpisz e-mail.";
   // } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-  //   errors.email = "Email address is invalid";
+  //   errors.email = "Niepoprawny format e-mail.";
   // }
   if (!values.login) {
-    errors.login = "Wpisz swój login";
+    errors.login = "Wpisz login.";
   } else if (values.login.length < 1) {
-    errors.login = "Login musi miec co najmniej 1 znak";
+    errors.login = "Login musi miec co najmniej 1 znak.";
   }
   if (!values.password) {
-    errors.password = "Wpisz swoje hasło";
+    errors.password = "Wpisz hasło.";
   } else if (values.password.length < 1) {
-    errors.password = "Hasło musi miec co najmniej 1 znak";
+    errors.password = "Hasło musi miec co najmniej 1 znak.";
   }
   return errors;
 };

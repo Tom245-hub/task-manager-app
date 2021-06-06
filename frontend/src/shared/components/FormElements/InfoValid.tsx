@@ -1,11 +1,29 @@
 import React from "react";
-import { StyledBox, StyledText } from "./InfoValid.css";
+import {
+  StyledInfoValidPositive,
+  StyledInfoValidNegative,
+  StyledText,
+} from "./InfoValid.css";
 
-const InfoValid: React.FC = ({ children }) => {
+interface InfoValidProps {
+  variant: "positive" | "negative";
+}
+
+const InfoValid: React.FC<InfoValidProps> = ({ children, variant }) => {
+  const VariantInfoValid = (() => {
+    switch (variant) {
+      case "positive":
+        return StyledInfoValidPositive;
+      case "negative":
+        return StyledInfoValidNegative;
+      default:
+        return StyledInfoValidNegative;
+    }
+  })();
   return (
-    <StyledBox>
+    <VariantInfoValid>
       <StyledText>{children}</StyledText>
-    </StyledBox>
+    </VariantInfoValid>
   );
 };
 

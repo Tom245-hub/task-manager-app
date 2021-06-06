@@ -1,10 +1,22 @@
+import { useState } from "react";
 import AuthForm from "../components/AuthForm";
-import { StyledContainer } from "./HomePage.css";
+import SignupForm from "../components/SignupForm";
+import { StyledContainer, StyledLogo, StyledText } from "./HomePage.css";
 
 const HomePage = () => {
+  const [isAuthMode, setIsAuth] = useState(true);
+  const toggleMode = () => {
+    setIsAuth((prev) => !prev);
+  };
   return (
     <StyledContainer>
-      <AuthForm />
+      <StyledLogo src='/logo.svg' />
+      <StyledText>Miło Cię widzieć!</StyledText>
+      {isAuthMode ? (
+        <AuthForm toggleMode={toggleMode} />
+      ) : (
+        <SignupForm toggleMode={toggleMode} />
+      )}
     </StyledContainer>
   );
 };
