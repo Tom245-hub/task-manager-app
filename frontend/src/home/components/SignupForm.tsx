@@ -13,13 +13,7 @@ import useForm from "../../shared/hooks/useForm";
 import { validate } from "../../shared/utils/validation";
 import InfoValid from "../../shared/components/FormElements/InfoValid";
 
-import {
-  StyledTitle,
-  StyledForm,
-  StyledLine,
-  StyledTextLabel,
-  StyledTextForm,
-} from "./AuthForm.css";
+import { StyledTitle, StyledForm, StyledLine, StyledTextForm } from "./AuthForm.css";
 
 interface SigupFormProps {
   toggleMode: any;
@@ -50,52 +44,52 @@ const SignupForm: React.FC<SigupFormProps> = ({ toggleMode }) => {
       <StyledTitle>Załóż konto</StyledTitle>
       <StyledLine />
       <StyledForm onSubmit={handleSubmit} noValidate>
-        <label>
-          <StyledTextLabel>E-mail:</StyledTextLabel>
-          <Input
-            id='email'
-            type='email'
-            name='email'
-            onChange={handleChange}
-            value={values.email || ""}
-            required
-            icon={faEnvelope}
-          />
-        </label>
+        <Input
+          id='email'
+          type='email'
+          name='email'
+          onChange={handleChange}
+          value={values.email || ""}
+          required
+          icon={faEnvelope}
+          labelText='E-mail:'
+          variant='input'
+        />
+
         {errors.email && <InfoValid variant='negative'>{errors.email}</InfoValid>}
         {/* {errorsServer.email && errorsServer.email === 404 && (
           <InfoValid>{errorsServer.message}</InfoValid>
         )} */}
 
-        <label>
-          <StyledTextLabel>Login:</StyledTextLabel>
-          <Input
-            id='login'
-            type='text'
-            name='login'
-            onChange={handleChange}
-            value={values.login || ""}
-            required
-            icon={faSignInAlt}
-          />
-        </label>
+        <Input
+          id='login'
+          type='text'
+          name='login'
+          onChange={handleChange}
+          value={values.login || ""}
+          required
+          icon={faSignInAlt}
+          labelText='Login:'
+          variant='input'
+        />
+
         {errors.login && <InfoValid variant='negative'>{errors.login}</InfoValid>}
         {/* {errorsServer.login && errorsServer.login === 404 && (
           <InfoValid>{errorsServer.message}</InfoValid>
         )} */}
 
-        <label>
-          <StyledTextLabel>Hasło:</StyledTextLabel>
-          <Input
-            id='password'
-            type='password'
-            name='password'
-            onChange={handleChange}
-            value={values.password || ""}
-            required
-            icon={faKey}
-          />
-        </label>
+        <Input
+          id='password'
+          type='password'
+          name='password'
+          onChange={handleChange}
+          value={values.password || ""}
+          required
+          icon={faKey}
+          labelText='Hasło:'
+          variant='input'
+        />
+
         {errors.password && <InfoValid variant='negative'>{errors.password}</InfoValid>}
 
         {infoServer.login && (

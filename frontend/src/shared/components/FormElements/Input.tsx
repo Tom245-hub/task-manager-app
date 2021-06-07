@@ -1,15 +1,23 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StyledBox, StyledInput, StyledIconBox } from "./Input.css";
+import {
+  StyledInput,
+  StyledTextarea,
+  StyledBox,
+  StyledIconBox,
+  StyledTextLabel,
+} from "./Input.css";
 
 interface InputProps {
   id: string;
-  type: "text" | "email" | "password";
   name: string;
   onChange: any;
-  value: any;
+  value: string | number;
   required: any;
-  icon: any;
+  labelText: string;
+  variant?: "input";
+  icon?: any;
+  type?: "text" | "email" | "password";
 }
 
 const Input: React.FC<InputProps> = ({
@@ -20,21 +28,39 @@ const Input: React.FC<InputProps> = ({
   value,
   required,
   icon,
+  labelText,
+  variant,
 }) => {
-  return (
-    <StyledBox>
-      <StyledIconBox>
-        <FontAwesomeIcon icon={icon} />
-      </StyledIconBox>
-      <StyledInput
+  const variantInput =
+    variant === "input" ? (
+      <>
+        <StyledIconBox>
+          <FontAwesomeIcon icon={icon} />
+        </StyledIconBox>
+        <StyledInput
+          id={id}
+          type={type}
+          name={name}
+          onChange={onChange}
+          value={value}
+          required={required}
+        />
+      </>
+    ) : (
+      <StyledTextarea
         id={id}
-        type={type}
         name={name}
         onChange={onChange}
         value={value}
         required={required}
-      />
-    </StyledBox>
+      ></StyledTextarea>
+    );
+
+  return (
+    <label>
+      <StyledTextLabel>{labelText}</StyledTextLabel>
+      <StyledBox>{variantInput}</StyledBox>
+    </label>
   );
 };
 

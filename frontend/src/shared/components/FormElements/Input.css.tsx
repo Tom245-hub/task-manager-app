@@ -21,3 +21,19 @@ export const StyledInput = styled.input`
     outline: none;
   }
 `;
+
+export const StyledTextarea = styled.textarea`
+  font-size: 1rem;
+  flex-grow: 1;
+  color: ${({ theme }) => theme.colors.primary.normal};
+  border: 1px solid white;
+  padding: 0.5rem;
+  :focus-visible {
+    outline: none;
+  }
+`;
+
+export const StyledTextLabel = styled.h6`
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+`;
