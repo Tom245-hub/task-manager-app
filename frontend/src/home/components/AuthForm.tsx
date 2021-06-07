@@ -4,7 +4,9 @@ import { faSignInAlt, faKey } from "@fortawesome/free-solid-svg-icons";
 import { postUser } from "../../shared/data/actions/userActions";
 import { RootState } from "../../shared/data/reducers/rootReducers";
 import useForm from "../../shared/hooks/useForm";
-import { validate } from "../../shared/utils/validation";
+
+import { errors } from "../../shared/models/errorsModel";
+import { values } from "../../shared/models/valuesModel";
 
 import Button from "../../shared/components/FormElements/Button";
 import Input from "../../shared/components/FormElements/Input";
@@ -13,13 +15,28 @@ import InfoValid from "../../shared/components/FormElements/InfoValid";
 
 import { StyledTitle, StyledForm, StyledLine, StyledTextForm } from "./AuthForm.css";
 
+const validate = (values: values) => {
+  let errors: errors = {};
+  if (!values.login) {
+    errors.login = "Wpisz login.";
+  } else if (values.login.length < 1) {
+    errors.login = "Login musi miec co najmniej 1 znak.";
+  }
+  if (!values.password) {
+    errors.password = "Wpisz hasło.";
+  } else if (values.password.length < 1) {
+    errors.password = "Hasło musi miec co najmniej 1 znak.";
+  }
+  return errors;
+};
+
 interface AuthFormProps {
   toggleMode: () => void;
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
   const dispatch = useDispatch();
-  const { values, errors, handleChange, handleSubmit } = useForm(
+  const { values, errors, handleChange, handleBlur, handleSubmit } = useForm(
     validate,
     handleSubmitAction
   );
@@ -45,6 +62,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
           type='text'
           name='login'
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.login || ""}
           required
           icon={faSignInAlt}
@@ -53,6 +71,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
         />
 
         {errors.login && <InfoValid variant='negative'>{errors.login}</InfoValid>}
+
         {errorsServer.error && errorsServer.error === 404 && (
           <InfoValid variant='negative'>{errorsServer.message}</InfoValid>
         )}
@@ -61,6 +80,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ toggleMode }) => {
           type='password'
           name='password'
           onChange={handleChange}
+          onBlur={handleBlur}
           value={values.password || ""}
           required
           icon={faKey}

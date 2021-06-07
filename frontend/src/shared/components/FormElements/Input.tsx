@@ -14,6 +14,7 @@ interface InputProps {
   id: string;
   name: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur: any;
   value: string | number;
   required: boolean;
   labelText: string;
@@ -27,6 +28,7 @@ const Input: React.FC<InputProps> = ({
   type,
   name,
   onChange,
+  onBlur,
   value,
   required,
   icon,
@@ -44,6 +46,7 @@ const Input: React.FC<InputProps> = ({
           type={type}
           name={name}
           onChange={onChange}
+          onBlur={onBlur}
           value={value}
           required={required}
         />

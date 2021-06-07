@@ -10,28 +10,37 @@ const useForm = (
   const [errors, setErrors] = useState<errors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
+  console.log(errors);
+
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       handleSubmitAction();
     }
   }, [errors]);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    if (event) event.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.persist();
+  const handleBlur = (e: any) => {
+    setErrors((prevState: any) => ({
+      ...prevState,
+      [e.target.name]: "Wpisz " + e.target.name + ".",
+    }));
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValues((values: values) => ({
       ...values,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     }));
   };
 
   return {
     handleChange,
+    handleBlur,
     handleSubmit,
     values,
     errors,
