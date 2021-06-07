@@ -1,5 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconName } from "@fortawesome/fontawesome-common-types";
+
 import {
   StyledInput,
   StyledTextarea,
@@ -16,7 +18,7 @@ interface InputProps {
   required: any;
   labelText: string;
   variant?: "input";
-  icon?: any;
+  icon: IconName;
   type?: "text" | "email" | "password";
 }
 
