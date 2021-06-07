@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconName } from "@fortawesome/fontawesome-common-types";
+import { faSignInAlt, faKey } from "@fortawesome/free-solid-svg-icons";
 
 import {
   StyledInput,
@@ -13,12 +13,12 @@ import {
 interface InputProps {
   id: string;
   name: string;
-  onChange: any;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   value: string | number;
-  required: any;
+  required: boolean;
   labelText: string;
   variant?: "input";
-  icon: IconName;
+  icon: typeof faSignInAlt;
   type?: "text" | "email" | "password";
 }
 
@@ -52,14 +52,13 @@ const Input: React.FC<InputProps> = ({
       <StyledTextarea
         id={id}
         name={name}
-        onChange={onChange}
         value={value}
         required={required}
       ></StyledTextarea>
     );
 
   return (
-    <label>
+    <label htmlFor={name}>
       <StyledTextLabel>{labelText}</StyledTextLabel>
       <StyledBox>{variantInput}</StyledBox>
     </label>

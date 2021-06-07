@@ -3,10 +3,10 @@ import AuthForm from "../components/AuthForm";
 import SignupForm from "../components/SignupForm";
 import { StyledContainer, StyledLogo, StyledText } from "./HomePage.css";
 
-const HomePage = () => {
-  const [isAuthMode, setIsAuth] = useState(true);
+const HomePage: React.FC = () => {
+  const [isAuthMode, setIsAuth] = useState<boolean>(true);
   const toggleMode = () => {
-    setIsAuth((prev) => !prev);
+    setIsAuth((prevState: boolean) => !prevState);
   };
   return (
     <StyledContainer>

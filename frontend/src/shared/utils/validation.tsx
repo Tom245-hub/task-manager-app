@@ -1,5 +1,8 @@
-export const validate = (values: any) => {
-  let errors: any = {};
+import { errors } from "../models/errorsModel";
+import { values } from "../models/valuesModel";
+
+export const validate = (values: values) => {
+  let errors: errors = {};
   // if (!values.email) {
   //   errors.email = "Wpisz e-mail.";
   // } else if (!/\S+@\S+\.\S+/.test(values.email)) {
