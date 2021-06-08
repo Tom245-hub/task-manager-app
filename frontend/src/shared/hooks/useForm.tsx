@@ -22,13 +22,17 @@ const useForm = (
     e.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
+    console.log("handleSubmit");
   };
 
   const handleBlur = (e: any) => {
-    setErrors((prevState: any) => ({
-      ...prevState,
-      [e.target.name]: "Wpisz " + e.target.name + ".",
-    }));
+    if (!e.target.value) {
+      setErrors((errors: errors) => ({
+        ...errors,
+        [e.target.name]: "test2",
+      }));
+    }
+    console.log("handleBlur");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,6 +40,15 @@ const useForm = (
       ...values,
       [e.target.name]: e.target.value,
     }));
+
+    if (e.target.value) {
+      setErrors((errors: errors) => ({
+        ...errors,
+        [e.target.name]: "",
+      }));
+    }
+
+    console.log("handleChange");
   };
 
   return {
