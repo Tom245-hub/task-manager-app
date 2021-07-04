@@ -29,8 +29,10 @@ const useForm = (
     if (!e.target.value) {
       setErrors((errors: errors) => ({
         ...errors,
-        [e.target.name]: "test2",
+        [e.target.name]: "Uzupełnij pole",
       }));
+    } else if (e.target.value) {
+      setErrors(validate(values));
     }
     console.log("handleBlur");
   };
