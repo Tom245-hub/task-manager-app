@@ -2,26 +2,27 @@ Task Manager App - Managment Aplication for projects with tasks.
 
 ## Technologies
 
-Frontend: React (CRA), Styled-Components
+Frontend: React (CRA), Styled-Components<br />
 Backend: Express.js, MongoDB
 
 ## Setup
 
-To run this project:
+To run this project:<br /><br />
 
-1. Open your terminal and clone repo:
-   `git clone https://github.com/Tom245-hub/task-manager-app.git`
+1. Open your terminal and clone repo:<br />
+   `git clone https://github.com/Tom245-hub/task-manager-app.git`<br /><br />
 
-Frontend: 
-2. Go to "frontend" folder 
-3. Install npm packages
-`npm install` 
-4. Run frontend
-`npm run start`
+Frontend: <br />
+2. Go to "frontend" folder <br />
+3. Install npm packages<br />
+`npm install` <br />
+4. Run frontend<br />
+`npm run start`<br />
+<br />
 
-Backend 
-5. Go to "backend" folder 
-6. Install npm packages
-`npm install` 
-7. Run backend
-`npm run start`
+Backend: <br />
+5. Go to "backend" folder <br />
+6. Install npm packages<br />
+`npm install` <br />
+7. Run backend<br />
+`npm run start`<br />
