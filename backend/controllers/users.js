@@ -1,31 +1,37 @@
 const User = require("../db/models/user");
+const jwt = require("jsonwebtoken");
 
 exports.postUser = async (req, res) => {
   try {
     const { login, password } = req.body;
     const user = await User.findOne({ login: login });
 
-    if (!user) {
-      res.status(404).json({
-        error: 404,
-        message: "Użytkownik o podanym loginie nie istnieje",
-      });
+    // if (!user) {
+    //   res.status(404).json({
+    //     error: 404,
+    //     message: "Użytkownik o podanym loginie nie istnieje",
+    //   });
 
-      return;
-    }
+    //   return;
+    // }
 
-    const isPasswordCorrect = user.password === password;
-    if (!isPasswordCorrect) {
-      res.status(401).json({
-        error: 401,
-        message: "Błędne hasło",
-      });
+    // const isPasswordCorrect = user.password === password;
+    // if (!isPasswordCorrect) {
+    //   res.status(401).json({
+    //     error: 401,
+    //     message: "Błędne hasło",
+    //   });
 
-      return;
-    }
+    //   return;
+    // }
+
+    const token = jwt.sign({ login: login }, process.env.JWT_SECRET, {
+      expiresIn: 1200,
+    });
 
     res.status(200).json({
-      user,
+      status: "success",
+      token,
     });
   } catch (error) {
     res.status(500).json({
@@ -44,10 +50,13 @@ exports.postNewUser = async (req, res) => {
     const userData = {
       email: email,
       login: login,
-      password: password,
     };
 
     user = new User(userData);
+
+    await User.register(user, password);
+
+    res.send("Użytkownik został utworzony");
 
     await user.save();
   } catch (err) {
